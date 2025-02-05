@@ -1,72 +1,57 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UNLIMITED TECH-TOOLS</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
-    :root {
-      --primary-color: #0078D7;
-      --secondary-color: #f4f4f9;
-      --text-color: #333;
-      --dark-bg: #222;
-      --dark-text: #fff;
-    }
+    /* Global Styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: var(--secondary-color);
-      color: var(--text-color);
-      transition: 0.3s;
+      background-color: var(--bg-color, #f4f4f9);
+      color: var(--text-color, #333);
+      transition: background-color 0.3s, color 0.3s;
     }
     header {
-      background-color: var(--primary-color);
+      background-color: #0078D7;
       color: #fff;
-      padding: 1.5em;
+      padding: 1em;
       text-align: center;
     }
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
+    main {
       padding: 1em;
     }
-    .section {
-      background: #fff;
-      padding: 1.5em;
+    .links {
       margin: 1em 0;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    a {
-      color: var(--primary-color);
+    .links a {
+      display: block;
+      color: #0078D7;
       text-decoration: none;
-      font-weight: bold;
+      margin: 0.5em 0;
     }
-    button {
-      background: var(--primary-color);
-      color: white;
+    .contact-buttons {
+      margin-top: 2em;
+    }
+    .contact-buttons a {
+      display: block;
       padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    button:hover {
-      opacity: 0.8;
-    }
-    .toggle-dark-mode {
-      background: var(--primary-color);
+      background-color: #0078D7;
       color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      margin: 10px 0;
       border-radius: 5px;
-      margin-top: 1em;
+    }
+    .qr-generator, .news-feed, .video-section, .hack-teaching {
+      margin-top: 2em;
+      padding: 1em;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
     }
     footer {
       text-align: center;
@@ -74,42 +59,168 @@
       background-color: #333;
       color: #fff;
     }
+    .toggle-dark-mode {
+      background: #0078D7;
+      color: #fff;
+      border: none;
+      padding: 0.5em;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 1em;
+    }
+    .qr-generator input, .news-feed input {
+      width: 80%;
+      padding: 0.5em;
+      margin: 0.5em 0;
+    }
+    .qr-generator button, .news-feed button {
+      padding: 0.5em;
+      background-color: #0078D7;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .image-section img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .link-buttons button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #0078D7;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 5px;
+      width: 100%;
+    }
   </style>
-</head>
+<script defer data-domain="freeweb.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script><script defer data-domain="champ-hack.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script><script defer data-domain="champ-hack.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script></head>
 <body>
   <header>
-    <h1>UNLIMITED TECH-TOOLS</h1>
-    <button class="toggle-dark-mode" onclick="toggleDarkMode()">
-      <i class="fas fa-moon"></i> Toggle Dark Mode
-    </button>
+    <h1>UNLIMITED TECH Resources & Tools</h1>
+    <p>Your go-to hub for tech resources, QR codes, and news.</p>
+    <button class="toggle-dark-mode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
   </header>
-  <div class="container">
-    <section class="section">
-      <h2>Important Links</h2>
-      <a href="https://developer.android.com/" target="_blank">Android Developer Guide</a><br>
-      <a href="https://www.w3schools.com/" target="_blank">W3Schools Tutorials</a>
+  <main>
+    <!-- Image Section -->
+    <section class="image-section">
+      <img src="https://champ-hack.tiiny.site/image&#32;(5).jpeg" alt="UNLIMITED TECH">
     </section>
-    <section class="section">
+
+    <!-- Links Section -->
+    <section class="links">
+      <h2>Important Links</h2>
+      <input type="text" id="searchBar" placeholder="Search links..." oninput="filterLinks()">
+      <div id="linksList">
+        <a href="https://developer.android.com/" target="_blank">Android Developer Guide</a>
+        <a href="https://www.w3schools.com/" target="_blank">W3Schools Tutorials</a>
+        <a href="https://github.com/" target="_blank">GitHub</a>
+        <a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a>
+        <a href="https://techcrunch.com/" target="_blank">TechCrunch</a>
+      </div>
+    </section>
+
+    <!-- Quick Access Buttons -->
+    <section class="link-buttons">
+      <h2>Quick Access</h2>
+      <button onclick="location.href='https://github.com/Bhai4You/Termux-Killer'">VIRUS TOOLS🦠</button>
+      <button onclick="location.href='https://www.youtube.com/'">YOUTUBE💥</button>
+      <button onclick="location.href='https://developer.mozilla.org/'">MDN WEB DOCS💥</button>
+      <button onclick="location.href='https://www.codecademy.com/'">CODECADAMY💥</button>
+      <button onclick="location.href='https://news.ycombinator.com/'">HACKER NEWS💥</button>
+      <button onclick="location.href='https://github.com/noolep/multiBF_ig'">INSTAGRAM CRACK💥</button>
+      <button onclick="location.href='https://github.com/KomolSaha/mail-bomber'">GMAIL BOMBER💥</button>
+      <button onclick="location.href='https://github.com/TheSpeedX/TBomb.git'">SMS BOMBER💥</button>
+      <button onclick="location.href='https://github.com/404rgr/spamerCALL'">SPAM CALL🤙</button>
+    </section>
+
+    <!-- Watch Videos Section -->
+    <section class="video-section">
+      <h2>Watch Tech Tutorials</h2>
+      <a href="https://www.youtube.com/c/ProgrammingKnowledge" target="_blank">Programming Knowledge YouTube Channel</a>
+      <a href="https://www.udemy.com/courses/search/?q=programming" target="_blank">Udemy Programming Courses</a>
+    </section>
+
+    <!-- Hack Teaching Section -->
+    <section class="hack-teaching">
+      <h2>Learn Hacking</h2>
+      <a href="https://www.hacker101.com/" target="_blank">Hacker101 - Free Hacking Courses</a>
+      <a href="https://www.udemy.com/course/learn-ethical-hacking-from-scratch/" target="_blank">Udemy Ethical Hacking Course</a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-buttons">
+      <h2>CONTACT OG CHAMP</h2>
+      <a href="https://whatsapp.com/channel/0029VaN2eQQ59PwNixDnvD16" target="_blank">VISIT MY CHANNEL</a>
+      <a href="https://wa.me/22897247256" target="_blank">CONTACT VIA WHATSAPP</a>
+    </section>
+
+    <!-- Chat with GPT-AI Section -->
+    <section class="contact-buttons">
+      <h2>Chat with GPT-AI</h2>
+      <a href="https://chat.openai.com/" target="_blank">Start Chat</a>
+    </section>
+
+    <!-- QR Code Generator Section -->
+    <section class="qr-generator">
       <h2>QR Code Generator</h2>
-      <input type="text" id="qrInput" placeholder="Enter URL here">
-      <button onclick="generateQR()"><i class="fas fa-qrcode"></i> Generate QR</button>
+      <p>Enter a URL below to generate a QR code:</p>
+      <form id="qrForm">
+        <input type="text" id="qrInput" placeholder="Enter URL here">
+        <label for="qrSize">Size:</label>
+        <select id="qrSize">
+          <option value="150x150">150x150</option>
+          <option value="200x200">200x200</option>
+          <option value="300x300">300x300</option>
+        </select>
+        <button type="button" onclick="generateQR()">Generate QR Code</button>
+      </form>
       <div id="qrCode" style="margin-top: 1em;"></div>
     </section>
-  </div>
+
+    <!-- News Feed Section -->
+    <section class="news-feed">
+      <h2>UNLIMITED TECH NEWS</h2>
+      <p>Get the latest updates in the tech world:</p>
+      <button onclick="fetchTechNews()">Load News</button>
+      <div id="newsList" style="margin-top: 1em;"></div>
+    </section>
+  </main>
   <footer>
-    <p>&copy; 2025 UNLIMITED TECH™ All Rights Reserved.</p>
+    <p>&copy; UNLIMITED-TECH™ All Rights Reserved.</p>
   </footer>
+
   <script>
     function toggleDarkMode() {
-      document.body.style.backgroundColor = 
-        document.body.style.backgroundColor === 'var(--dark-bg)' ? 'var(--secondary-color)' : 'var(--dark-bg)';
-      document.body.style.color = 
-        document.body.style.color === 'var(--dark-text)' ? 'var(--text-color)' : 'var(--dark-text)';
+      document.body.style.setProperty('--bg-color', document.body.style.getPropertyValue('--bg-color') === '#333' ? '#f4f4f9' : '#333');
+      document.body.style.setProperty('--text-color', document.body.style.getPropertyValue('--text-color') === '#fff' ? '#333' : '#fff');
     }
     function generateQR() {
       const url = document.getElementById('qrInput').value;
+      const size = document.getElementById('qrSize').value;
       const qrCodeDiv = document.getElementById('qrCode');
-      qrCodeDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(url)}&size=150x150" alt="QR Code">`;
+      qrCodeDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(url)}&size=${size}" alt="QR Code">`;
+    }
+    function fetchTechNews() {
+      const newsList = document.getElementById('newsList');
+      newsList.innerHTML = '<p>Loading news...</p>';
+      setTimeout(() => {
+        newsList.innerHTML = '<p>Latest Tech News will appear here.</p>';
+      }, 2000);
+    }
+    function filterLinks() {
+      const search = document.getElementById('searchBar').value.toLowerCase();
+      const links = document.getElementById('linksList').getElementsByTagName('a');
+      for (let i = 0; i < links.length; i++) {
+        const linkText = links[i].textContent.toLowerCase();
+        links[i].style.display = linkText.includes(search) ? 'block' : 'none';
+      }
     }
   </script>
 </body>
