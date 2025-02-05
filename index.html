@@ -6,86 +6,106 @@
   <title>UNLIMITED TECH-TOOLS</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
+    :root {
+      --primary-color: #0078D7;
+      --secondary-color: #f4f4f9;
+      --text-color: #333;
+      --dark-bg: #222;
+      --dark-text: #fff;
+    }
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
-      color: #333;
-      transition: background-color 0.3s, color 0.3s;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      transition: 0.3s;
     }
     header {
-      background: linear-gradient(90deg, #0078D7, #005bb5);
-      color: white;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 1.5em;
       text-align: center;
-      padding: 20px;
-      font-size: 1.5em;
-      font-weight: bold;
     }
     .container {
       width: 90%;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: auto;
-      padding: 20px;
+      padding: 1em;
     }
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: transform 0.3s;
+    .section {
+      background: #fff;
+      padding: 1.5em;
+      margin: 1em 0;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    .card:hover {
-      transform: scale(1.02);
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #0078D7;
-      color: white;
+    a {
+      color: var(--primary-color);
       text-decoration: none;
-      border-radius: 5px;
-      transition: 0.3s;
+      font-weight: bold;
     }
-    .btn:hover {
-      background: #005bb5;
+    button {
+      background: var(--primary-color);
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+    .toggle-dark-mode {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 1em;
     }
     footer {
-      background: #333;
-      color: white;
       text-align: center;
-      padding: 15px;
-      margin-top: 20px;
+      padding: 1em;
+      background-color: #333;
+      color: #fff;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1><i class="fas fa-laptop-code"></i> UNLIMITED TECH-TOOLS</h1>
-    <p>Your go-to hub for tech resources and tools.</p>
+    <h1>UNLIMITED TECH-TOOLS</h1>
+    <button class="toggle-dark-mode" onclick="toggleDarkMode()">
+      <i class="fas fa-moon"></i> Toggle Dark Mode
+    </button>
   </header>
-
   <div class="container">
-    <div class="card">
-      <h2>Quick Access Links</h2>
-      <a href="https://github.com/" class="btn" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://stackoverflow.com/" class="btn" target="_blank"><i class="fab fa-stack-overflow"></i> Stack Overflow</a>
-    </div>
-
-    <div class="card">
+    <section class="section">
+      <h2>Important Links</h2>
+      <a href="https://developer.android.com/" target="_blank">Android Developer Guide</a><br>
+      <a href="https://www.w3schools.com/" target="_blank">W3Schools Tutorials</a>
+    </section>
+    <section class="section">
       <h2>QR Code Generator</h2>
       <input type="text" id="qrInput" placeholder="Enter URL here">
-      <button class="btn" onclick="generateQR()">Generate QR Code</button>
+      <button onclick="generateQR()"><i class="fas fa-qrcode"></i> Generate QR</button>
       <div id="qrCode" style="margin-top: 1em;"></div>
-    </div>
+    </section>
   </div>
-
   <footer>
-    <p>&copy; UNLIMITED-TECH™ All Rights Reserved.</p>
+    <p>&copy; 2025 UNLIMITED TECH™ All Rights Reserved.</p>
   </footer>
-
   <script>
+    function toggleDarkMode() {
+      document.body.style.backgroundColor = 
+        document.body.style.backgroundColor === 'var(--dark-bg)' ? 'var(--secondary-color)' : 'var(--dark-bg)';
+      document.body.style.color = 
+        document.body.style.color === 'var(--dark-text)' ? 'var(--text-color)' : 'var(--dark-text)';
+    }
     function generateQR() {
       const url = document.getElementById('qrInput').value;
       const qrCodeDiv = document.getElementById('qrCode');
